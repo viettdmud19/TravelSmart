@@ -1,0 +1,52 @@
+﻿@model TravelSmart.Models.DIADIEM
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>THÊM ĐỊA ĐIỂM</h2>
+@*Thêm thuộc tính cho form để upload ảnh*@
+@using (Html.BeginForm("Create", "DiaDiem", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Tên Địa điểm</label>
+            <div class="col-md-10">
+                <input type="text" size="70" name="sTen_DD" value="@ViewBag.Ten_DD" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Mô Tả</label>
+            <div class="col-md-10">
+                <textarea name="sMoTa_DD">@ViewBag.MoTa_DD</textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Ảnh bìa</label>
+            <div class="col-md-10">
+                <input type="file" name="fFileUpload" />
+                @*Thông báo lỗi yêu cầu phải chọn ảnh bìa*@
+                @ViewBag.ThongBao
+            </div>
+        </div>
+
+        
+
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm Mới" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+

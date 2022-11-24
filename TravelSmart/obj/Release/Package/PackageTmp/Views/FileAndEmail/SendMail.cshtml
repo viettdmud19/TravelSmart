@@ -1,0 +1,30 @@
+﻿@using TravelSmart.Models
+@{
+    KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+    
+}
+@{
+    ViewBag.Title = "SendMail";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h3>LIÊN HỆ VỚI DOANH NGHIỆP</h3>
+<h4>@Html.Raw(ViewBag.ThongBao)</h4>
+<div>
+    <form action="/FileAndEmail/SendMail" name="SendMail"
+          method="post" enctype="multipart/form-data">
+        <div>Form:</div>
+        <input name="Form" type="email"  value="@kh.Email"  />
+        
+         <div>To:</div>
+        <input name="To" type="email"  required />
+        <div>Subject:</div>
+        <input name="Subject" type="text" />
+        <div>Notes:</div>
+        <textarea name="Notes" rows="4"></textarea>
+        <div>Attachment:</div>
+        <input name="Attachment" type="file" />
+        <hr />
+        <input type="submit" value="Send" />
+    </form>
+</div>

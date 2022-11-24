@@ -1,0 +1,52 @@
+﻿@model TravelSmart.Models.DIADIEM
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<h2 style="text-align:center">THÔNG TIN ĐỊA ĐIỂM</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Địa điểm :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_DD)
+        </dd>
+
+        <dt>
+            Mô Tả:
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.MoTa_DD.ToString().Replace("\n", "</p><p>"))
+        </dd>
+
+        <dt>
+            Ảnh Bìa:
+        </dt>
+
+        <dd>
+            <img src="~/Images/@Model.ANH_DD" alt="@Model.Ten_DD" />
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.Ma_DD }) |
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ ", "Index")
+</p>
+
+

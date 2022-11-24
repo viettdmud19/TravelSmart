@@ -1,0 +1,105 @@
+﻿@model TravelSmart.Models.AMTHUC
+@{
+    ViewBag.Title = "ChiTietAMTHUC";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style type="text/css">
+    .provider-info {
+        margin-top: 20px;
+        border: solid 1px #ccc;
+        height: 350px;
+        display: table;
+        width: 100%;
+    }
+
+        .provider-info .Left-info {
+            height: 348px;
+            box-shadow: inset 0 0 0 1000px rgb(0 179 220 / 90%);
+            float: left;
+            display: table;
+            width: 40%;
+        }
+
+            .provider-info.Left-info.image-wrap {
+                padding: 45px;
+                background-size: cover;
+                box-shadow: inset 0 0 0 1000px rgb(0 179 220 / 90%);
+                width: 80%;
+                display: table;
+            }
+
+            .provider-info .left-info img {
+                border: solid 2px #fff;
+            }
+
+        .provider-info .right-info {
+            float: left;
+            width: 60%;
+            padding-left: 20px;
+            padding-right: 20px;
+            background-color: lightseagreen;
+        }
+
+        .provider-info h1 {
+            font-size: 24px;
+            color: #0084a2;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            text-decoration:none;
+        }
+
+    .information {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: table;
+    }
+
+        .information scan {
+            color: red;
+            font-weight: bold;
+        }
+
+    .image-hotel img {
+        width: 30%;
+        height: 200px;
+    }
+
+    .danhmuc a {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+<hr />
+<div class="provider-info">
+
+    <div class="Left-info">
+        <div class="image-wrap">
+            <img src="~/Images/LuuTru/@Html.DisplayFor(model => model.HOTEL.Anh_HOTEL)"  />
+        </div>
+    </div>
+    <div class="Right-info">
+        <a href="@Url.Action("ChitietLUUTRU","Travel", new { id = Model.Ma_HOTEL })"> <h1> @Html.DisplayFor(model => model.HOTEL.Ten_HOTEL)</h1></a> 
+        <div class="information">
+            <div class="phone">
+                <i>Số Điện Thoai :  </i>
+                <scan>@Html.DisplayFor(model => model.HOTEL.DT_HOTEL)</scan>
+            </div>
+
+            <div class="address">
+                <i>Địa Chỉ : </i>
+                <scan>@Html.DisplayFor(model => model.HOTEL.DiaChi_HOTEL)</scan>
+            </div>
+        </div>
+        <div class="image-hotel">
+            <i>Chi Tiết Nhà Hàng :</i>
+            <img src="~/Images/AMTHUC/@Model.Anh_AT" alt="@Model.Ten_AT" />
+        </div>
+        <div class="danhmuc">
+            <i>Danh Mục : </i><a href="@Url.Action("LUUTRU","Travel")">Lưu Trú</a>
+
+        </div>
+    </div>
+
+
+</div>

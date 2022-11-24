@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TravelSmart</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    
+
+    @*<link href="~/CSS/Footer.css" rel="stylesheet" />*@
+    <style type="text/css">
+        .header {
+            background-color: lightseagreen;
+        }
+        
+    </style>
+
+</head>
+
+<body>
+    <header>
+
+      @Html.Action("HeaderPartial","Travel")
+      @Html.Action("SlidePartial","Travel")
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <hr />
+              @Html.Action("DanhMucPartial","Travel")
+                <hr>
+
+                <ul class="list-group ">
+                    <img width="260" class="active" src="~/Images/danang.png" />
+                </ul>
+                <hr>
+
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                @RenderBody()
+            </div>
+            <hr>
+        </div>
+    </div>
+    <hr />
+    <footer class="container well">
+
+      
+            <div class="row text-center text-xs-center text-sm-left text-md-left">
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <h5>Địa Điểm Liên Hệ</h5>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.483222034978!2d106.58482751488766!3d11.077318192117762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174cd9f3a44b155%3A0x0!2zMTHCsDA0JzM4LjQiTiAxMDbCsDM1JzEzLjMiRQ!5e0!3m2!1svi!2s!4v1626658597703!5m2!1svi!2s" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <h5>THÔNG TIN</h5>
+                    <ul class="list-unstyled quick-links">
+                        <li><a href="@Url.Action("Index","Travel")"><i class="fa fa-angle-double-right"></i>Trang Chủ</a></li>
+                        <li><a href="https://www.fiverr.com/share/qb8D02"><i class="fa fa-angle-double-right"></i>Giới Thiệu</a></li>
+                        <li><a href="@Url.Action("TOUR","Travel")"><i class="fa fa-angle-double-right"></i>TOUR</a></li>
+                        <li><a href="@Url.Action("LUUTRU","Travel")"><i class="fa fa-angle-double-right"></i>Lưu Trú</a></li>
+                        <li><a href="@Url.Action("LienKet","Travel")"><i class="fa fa-angle-double-right"></i>Gian Liên Kết</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                    <p><u><a href="https://www.nationaltransaction.com/">Đồ án Lập trình Web</a></u>Đặng Hải Việt_1924801030302</p>
+                    <p class="h6"><a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank"></a></p>
+                </div>
+                <hr>
+            </div>
+     
+
+    </footer>
+</body>
+</html>

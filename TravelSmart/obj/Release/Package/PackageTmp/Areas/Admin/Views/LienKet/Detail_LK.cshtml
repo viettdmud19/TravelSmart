@@ -1,0 +1,62 @@
+﻿@model TravelSmart.Models.LIENKET
+@{
+    ViewBag.Title = "Detail_LK";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<h2 style="text-align:center">THÔNG TIN LIÊN KẾT</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Liên Kết :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_LK)
+        </dd>
+
+        <dt>
+            Điện Thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+        <dt>
+            Ảnh Bìa:
+        </dt>
+
+        <dd>
+            <img src="~/Images/LienKet/@Model.Anh_LK" alt="@Model.Ten_LK" />
+        </dd>
+        <dt>
+            Email:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit_LK", new { id = Model.Ma_LK }) |
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ ", "Index")
+</p>

@@ -1,0 +1,40 @@
+﻿
+@{
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>login</title>
+    <link href="~/Content/reset.css" rel="stylesheet" />
+    <link href="~/Content/structure.css" rel="stylesheet" />
+    <style type="text/css">
+        .box.login {
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="~/Admin/Home/Login" method="post" class="box login">
+        <fieldset class="boxBody">
+            <h4 style="text-align:center; font-weight:bold">LOGIN ADMIN</h4>
+            <label>Username</label>
+            <input type="text" tabindex="1" name="UserName" placeholder="Type your username" required />
+            <label>Password</label>
+            <label><a href="#" class="rlink" tabindex="5">Forget your Password?</a></label>
+            <input type="password" tabindex="2" name="Password" placeholder="Type your Password" required />
+            <p style="font-size:initial; color:red; margin:0px;">@ViewBag.ThongBao</p>
+        </fieldset>
+        <footer>
+            <label><input type="checkbox" tabindex="3" />Keep Me Logged In </label>
+            <input type="submit" class="btnLogin" value="Login" tabindex="4" />
+        </footer>
+    </form>
+
+</body>
+</html>

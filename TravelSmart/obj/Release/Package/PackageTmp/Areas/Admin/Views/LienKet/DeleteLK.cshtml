@@ -1,0 +1,78 @@
+﻿@model TravelSmart.Models.LIENKET
+@{
+    ViewBag.Title = "DeleteLK";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+
+    h3, h4 {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+<h2>XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+
+<h3>Bạn quyết định Gian Liên kết này?</h3>
+<h4>@Html.Raw(ViewBag.ThongBao)</h4>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Liên Kết :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_LK)
+        </dd>
+
+        <dt>
+            Điện Thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+        <dt>
+            Ảnh Bìa:
+        </dt>
+
+        <dd>
+            <img src="~/Images/LienKet/@Model.Anh_LK" alt="@Model.Ten_LK" />
+        </dd>
+        <dt>
+            Email:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+   
+
+    </dl>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="XÓA" class="btn btn-default" /> |
+            @Html.ActionLink("VỀ TRANG QUẢN LÝ ", "Index")
+        </div>
+    }
+</div>
+

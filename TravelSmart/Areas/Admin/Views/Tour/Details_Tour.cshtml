@@ -1,0 +1,98 @@
+﻿@model TravelSmart.Models.TOUR
+@{
+    ViewBag.Title = "Details_Tour";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<h2 style="text-align:center">THÔNG TIN TOUR</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên TOUR :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_TOUR)
+        </dd>
+        <dt>
+            Ảnh Main:
+        </dt>
+
+        <dd>
+            <img src="~/Images/Tour/@Model.Anh_MAIN" alt="@Model.Ten_TOUR" />
+        </dd>
+        <dt>
+            Ảnh Bìa:
+        </dt>
+
+        <dd>
+            <img src="~/Images/Tour/@Model.Anh_TOUR" alt="@Model.Ten_TOUR" />
+        </dd>
+        <dt>
+            Lịch Trình:
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Lich_Trinh.ToString().Replace("\n", "</p><p>"))
+        </dd>
+
+        <dt>
+            Gía Tiền TOUR :
+        </dt>
+
+        <dd>
+            @Html.FormatValue(Model.GiaTien_TOUR, "{0:#,##0}")VNĐ
+        </dd>
+        <dt>
+            Số lượng vé:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+        <dt>
+            Ngày Khởi hành
+        </dt>
+
+        <dd>
+            @Html.FormatValue(Model.NgayTOUR, "{0:dd/MM/yyyy}")
+        </dd>
+        <dt>
+            Địa Điểm khởi hành:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIADIEM.Ten_DD)
+        </dd>
+
+        <dt>
+            Gian Liên Kết:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LIENKET.Ten_LK)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.Ma_TOUR }) |
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ ", "IndexTour")
+</p>
+
+
+
+

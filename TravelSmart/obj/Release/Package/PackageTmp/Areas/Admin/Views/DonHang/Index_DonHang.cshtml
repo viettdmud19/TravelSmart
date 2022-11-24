@@ -1,0 +1,60 @@
+﻿@*Khai báo để sử dụng chức năng phân trang*@
+@using TravelSmart.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<TravelSmart.Models.DONDATHANG>
+@{
+    ViewBag.Title = "Index_DonHang";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>THÔNG TIN ĐƠN HÀNG</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Mã Đơn đặt vé:
+        </th>
+        <th>
+            Tên Khách hàng
+        </th>
+        <th>
+            Điện Thoại
+        </th>
+        <th>
+            Địa Chỉ
+        </th>
+        <th>
+            Ngày đặt
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaDonHang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.KHACHHANG.DienThoai)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.KHACHHANG.DiaChi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgayDat)
+    </td>
+
+    <td>
+       
+        <a href="@Url.Action("Chitiet","DonHang", new { id = item.MaDonHang })" class="btn btn-primary" role="button">Chi tiết</a>
+        
+    </td>
+</tr>
+    }
+
+</table>

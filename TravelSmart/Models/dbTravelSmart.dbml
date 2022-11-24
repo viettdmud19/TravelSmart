@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TravelSmart" Class="dbTravelSmartDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ADMIN\SQLEXPRESS;Initial Catalog=TravelSmart;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TravelSmartConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ADMIN" Member="ADMINs">
+    <Type Name="ADMIN">
+      <Column Name="MaAd" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TenDN" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Quyen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AMTHUC" Member="AMTHUCs">
+    <Type Name="AMTHUC">
+      <Column Name="Ma_AT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ma_HOTEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ten_AT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Anh_AT" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Association Name="HOTEL_AMTHUC" Member="HOTEL" ThisKey="Ma_HOTEL" OtherKey="Ma_HOTEL" Type="HOTEL" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CHITIETDATHANG" Member="CHITIETDATHANGs">
+    <Type Name="CHITIETDATHANG">
+      <Column Name="MaDonHang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaTour" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DonGia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="DONDATHANG_CHITIETDATHANG" Member="DONDATHANG" ThisKey="MaDonHang" OtherKey="MaDonHang" Type="DONDATHANG" IsForeignKey="true" />
+      <Association Name="TOUR_CHITIETDATHANG" Member="TOUR" ThisKey="MaTour" OtherKey="Ma_TOUR" Type="TOUR" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DIADIEM" Member="DIADIEMs">
+    <Type Name="DIADIEM">
+      <Column Name="Ma_DD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ten_DD" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MoTa_DD" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ANH_DD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Luot_YeuThich" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DIADIEM_HOTEL" Member="HOTELs" ThisKey="Ma_DD" OtherKey="Ma_DD" Type="HOTEL" />
+      <Association Name="DIADIEM_TOUR" Member="TOURs" ThisKey="Ma_DD" OtherKey="Ma_DD" Type="TOUR" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DONDATHANG" Member="DONDATHANGs">
+    <Type Name="DONDATHANG">
+      <Column Name="MaDonHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DaThanhToan" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NgayDat" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="MaKH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DONDATHANG_CHITIETDATHANG" Member="CHITIETDATHANGs" ThisKey="MaDonHang" OtherKey="MaDonHang" Type="CHITIETDATHANG" />
+      <Association Name="KHACHHANG_DONDATHANG" Member="KHACHHANG" ThisKey="MaKH" OtherKey="MaKH" Type="KHACHHANG" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GIAITRI" Member="GIAITRIs">
+    <Type Name="GIAITRI">
+      <Column Name="Ma_GT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ma_HOTEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ten_GT" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ANH_GT" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Association Name="HOTEL_GIAITRI" Member="HOTEL" ThisKey="Ma_HOTEL" OtherKey="Ma_HOTEL" Type="HOTEL" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HOTEL" Member="HOTELs">
+    <Type Name="HOTEL">
+      <Column Name="Ma_HOTEL" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ten_HOTEL" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Anh_HOTEL" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Anh_Bia" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="DT_HOTEL" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="DiaChi_HOTEL" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Ma_DD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="HOTEL_AMTHUC" Member="AMTHUCs" ThisKey="Ma_HOTEL" OtherKey="Ma_HOTEL" Type="AMTHUC" />
+      <Association Name="HOTEL_GIAITRI" Member="GIAITRIs" ThisKey="Ma_HOTEL" OtherKey="Ma_HOTEL" Type="GIAITRI" />
+      <Association Name="DIADIEM_HOTEL" Member="DIADIEM" ThisKey="Ma_DD" OtherKey="Ma_DD" Type="DIADIEM" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KHACHHANG" Member="KHACHHANGs">
+    <Type Name="KHACHHANG">
+      <Column Name="MaKH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TaiKhoan" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="MatKhau" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Association Name="KHACHHANG_DONDATHANG" Member="DONDATHANGs" ThisKey="MaKH" OtherKey="MaKH" Type="DONDATHANG" />
+      <Association Name="KHACHHANG_TINTUC" Member="TINTUCs" ThisKey="MaKH" OtherKey="Ma_KH" Type="TINTUC" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LIENKET" Member="LIENKETs">
+    <Type Name="LIENKET">
+      <Column Name="Ma_LK" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ten_LK" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DienThoai" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Anh_LK" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="LIENKET_TOUR" Member="TOURs" ThisKey="Ma_LK" OtherKey="Ma_LK" Type="TOUR" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TINTUC" Member="TINTUCs">
+    <Type Name="TINTUC">
+      <Column Name="ma_TT" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TieuDe_TT" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MoTa_TT" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Anh_TT" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Ma_KH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NgayDang_TT" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Association Name="KHACHHANG_TINTUC" Member="KHACHHANG" ThisKey="Ma_KH" OtherKey="MaKH" Type="KHACHHANG" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TOUR" Member="TOURs">
+    <Type Name="TOUR">
+      <Column Name="Ma_TOUR" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ten_TOUR" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Anh_MAIN" Type="System.String" DbType="VarChar(45) NOT NULL" CanBeNull="false" />
+      <Column Name="Anh_TOUR" Type="System.String" DbType="VarChar(45) NOT NULL" CanBeNull="false" />
+      <Column Name="Lich_Trinh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GiaTien_TOUR" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NgayTOUR" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Ma_DD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ma_LK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="TOUR_CHITIETDATHANG" Member="CHITIETDATHANGs" ThisKey="Ma_TOUR" OtherKey="MaTour" Type="CHITIETDATHANG" />
+      <Association Name="DIADIEM_TOUR" Member="DIADIEM" ThisKey="Ma_DD" OtherKey="Ma_DD" Type="DIADIEM" IsForeignKey="true" />
+      <Association Name="LIENKET_TOUR" Member="LIENKET" ThisKey="Ma_LK" OtherKey="Ma_LK" Type="LIENKET" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

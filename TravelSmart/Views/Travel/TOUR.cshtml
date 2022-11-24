@@ -1,0 +1,61 @@
+﻿@using TravelSmart.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<TOUR>
+@{
+    ViewBag.Title = "TOUR";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<link href="~/CSS/index.css" rel="stylesheet" />
+
+<h2>TOUR SẮP DIỄN RA </h2>
+
+<div class="row-test-center">
+    @foreach (var tour in Model)
+    {
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+            <div class="border">
+                <div class="product-top">
+
+                    <span class="sl">Còn Lại @tour.SoLuong</span>
+
+                    <img src="~/Images/Tour/@tour.Anh_TOUR" />
+
+                    <div class="tendd text-center">
+                        <h3>
+                            <a href="@Url.Action("ChiTietTour","Travel", new { id = tour.Ma_TOUR })">
+
+                                @tour.Ten_TOUR
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="price">
+                        <span class="d">@Html.FormatValue(tour.GiaTien_TOUR, "{0:#,##0}") VNĐ</span>
+                    </div>
+
+                    <a href="@Url.Action("ChiTietTour","Travel", new { id = tour.Ma_TOUR })" class="xem-ngay">XEM THÊM</a>
+
+                </div>
+            </div>
+
+
+
+        </div> <hr />}
+
+</div>
+@*Tạo liên kết các trang*@
+Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+
+    @Html.PagedListPager(Model, page => Url.Action("TOUR", "Travel", new {  page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>
+
+
+

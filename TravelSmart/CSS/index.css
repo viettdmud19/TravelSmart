@@ -1,0 +1,59 @@
+﻿.container-fluid {
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+    .container-fluid h2 {
+        color: black;
+    }
+
+
+.row-test-center {
+    margin-top: 20px;
+}
+
+.product-top img {
+    width: 100%;
+    background-color: white;
+}
+
+.border {
+    border: 0.5px solid black;
+  
+}
+
+
+
+.tendd h3 a {
+    padding-top: 30px;
+    font-size: 15px;
+    color: black;
+}
+
+a.xem-ngay {
+    background-color: white;
+    border: 1px solid black;
+    padding: 14px 14px;
+    color: black;
+    font-weight: bold;
+}
+
+    a.xem-ngay:hover {
+        background-color: lightseagreen;
+        transition: all 0.3s ease-in-out 0s;
+        cursor: pointer;
+    }
+
+.price {
+    text-align: center;
+    color: red;
+    padding-bottom: 14px;
+}
+
+.sl {
+    background-color: red;
+    border: 1px solid black;
+    padding: 5px 10px;
+    color: white;
+    font-weight: bold;
+}

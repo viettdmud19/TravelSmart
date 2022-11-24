@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "ChitietLienKet";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<style type="text/css">
+    .provider-info {
+        margin-top: 20px;
+        border: solid 1px #ccc;
+        height: 350px;
+        display: table;
+        width: 100%;
+    }
+
+        .provider-info .Left-info {
+            height: 348px;
+            box-shadow: inset 0 0 0 1000px rgb(0 179 220 / 90%);
+            float: left;
+            display: table;
+            width: 40%;
+        }
+
+            .provider-info.Left-info.image-wrap {
+                padding: 45px;
+                background-size: cover;
+                box-shadow: inset 0 0 0 1000px rgb(0 179 220 / 90%);
+                width: 80%;
+                display: table;
+            }
+
+            .provider-info .left-info img {
+                border: solid 2px #fff;
+            }
+
+        .provider-info .right-info {
+            float: left;
+            width: 60%;
+            padding-left: 20px;
+            padding-right: 20px;
+            background-color: lightseagreen;
+        }
+
+        .provider-info h1 {
+            font-size: 24px;
+            color: #0084a2;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+    .information {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: table;
+    }
+
+        .information scan {
+            color: red;
+            font-weight: bold;
+        }
+
+    .image-hotel img {
+        width: 30%;
+        height: 200px;
+    }
+
+    .danhmuc a {
+        color: red;
+        font-weight: bold;
+
+    }
+    a.xem-ngay {
+        background-color: white;
+        border: 1px solid black;
+        padding: 25px 25px;
+        color: black;
+        font-weight: bold;
+        float:right;
+    }
+
+        a.xem-ngay:hover {
+            background-color: lightseagreen;
+            transition: all 0.3s ease-in-out 0s;
+            cursor: pointer;
+        }
+</style>
+<hr />
+<div class="provider-info">
+
+    <div class="Left-info">
+        <div class="image-wrap">
+            <img src="~/Images/LienKet/@Model.Anh_LK" alt="@Model.Ma_LK" />
+        </div>
+    </div>
+    <div class="Right-info">
+        <h1> @Model.Ten_LK</h1>
+        <div class="information">
+            <div class="phone">
+                <i>Số Điện Thoai :  </i>
+                <scan>@Model.DienThoai</scan>
+            </div>
+
+            <div class="address">
+                <i>Địa Chỉ : </i>
+                <scan>@Model.DiaChi</scan>
+            </div>
+            <div class="address">
+                <i>Email : </i>
+                <scan>@Model.Email</scan>
+            </div>
+        </div>
+        <div class="danhmuc">
+            <i>Danh Mục : </i><a href="@Url.Action("TOUR","Travel")">Tour</a>
+
+        </div>
+        
+        <a href="@Url.Action("SendMail","FileAndEmail", new { id = Model.Ma_LK })" class="xem-ngay">LIÊN HỆ</a>
+    </div>
+
+
+</div>
+
+

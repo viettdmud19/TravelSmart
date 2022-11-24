@@ -1,0 +1,68 @@
+﻿@model TravelSmart.Models.LIENKET
+@{
+    ViewBag.Title = "EditLK";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>ĐIỀU CHỈNH GIAN LIÊN KẾT</h2>
+
+@using (Html.BeginForm("EditLK", "LienKet", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-lg-1 col-md-2">Mã Liên Kết: </label>
+        <div class="col-md-10">
+            <input type="text" size="70" name="iMa_LK" value="@Model.Ma_LK" readonly />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Tên Liên Kết :</label>
+        <div class="col-md-10">
+            <input type="text" size="70" name="sTen_LK" value="@Model.Ten_LK" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Ảnh :</label>
+        <div class="col-md-10">
+            <input type="file" name="fFileUpload" />
+            <img src="~/Images/LienKet/@Model.Anh_LK" width="120" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Điện Thoại</label>
+        <div class="col-md-10">
+            <input type="text" size="70" name="sDienThoai" value="@Model.DienThoai" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Email</label>
+        <div class="col-md-10">
+            <input type="text" size="70" name="sEmail" value="@Model.Email" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Địa Chỉ</label>
+        <div class="col-md-10">
+            <input type="text" size="70" name="sDiaChi" value="@Model.DiaChi" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="LƯU THÔNG TIN" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ ", "Index")
+</div>
+
+

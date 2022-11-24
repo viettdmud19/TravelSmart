@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TravelSmart.Models.DIADIEM>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+   
+  
+   
+    <link href="~/CSS/index.css" rel="stylesheet" />
+    
+
+}
+<div class="container-fluid">
+    <h2>ĐỊA ĐIỂM NỔI BẬT </h2>
+
+    <div class="row-test-center">
+        @foreach (var diadiem in Model)
+        {
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+            <div class="border">
+                <div class="product-top">
+                    <img src="~/Images/@diadiem.ANH_DD" />
+                  
+                       <div class="tendd text-center">
+                        <h3>
+                            <a href="@Url.Action("ChiTietDiaDiem","Travel", new { id = diadiem.Ma_DD })">
+
+                            @diadiem.Ten_DD</a>
+                        </h3>
+                    </div>
+              
+            </div>
+        </div>
+     
+        
+       
+    </div>   }
+</div>
+    </div>
+<div class="container-fluid">
+    @Html.Action("TourPartial","Travel")
+    </div>
+<div class="container-fluid">
+   @Html.Action("LuuTruPartial","Travel")
+    </div>
+
+
+
+
+
+
+
+
+
+

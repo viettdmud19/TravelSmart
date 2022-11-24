@@ -1,0 +1,127 @@
+﻿@*Khai báo để sử dụng chức năng phân trang*@
+@using TravelSmart.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<TravelSmart.Models.TOUR>
+@{
+    ViewBag.Title = "IndexTour";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+
+
+
+@*Xây dựng một helper tùy chỉnh để cắt độ dài chuỗi*@
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text></text>
+    }
+}
+
+
+
+<h2 style="text-align:center">QUẢN LÝ THÔNG TIN TOUR</h2>
+
+<p>
+    @Html.ActionLink("Thêm Mới", "CreateTour")
+</p>
+<table class="table">
+    <tr>
+        <th style="text-align:center; width:140px">
+            Tên TOUR
+        </th>
+        <th style="text-align:center; width:100px">
+            @Html.DisplayNameFor(model => model.First().Anh_MAIN)
+        </th>
+        <th style="text-align:center; width:100px">
+            @Html.DisplayNameFor(model => model.First().Anh_TOUR)
+        </th>
+        <th style="text-align:center; width:200px">
+            Lịch Trình
+        </th>
+        <th style="text-align:center; width:80px">
+            @Html.DisplayNameFor(model => model.First().GiaTien_TOUR)
+        </th>
+        <th style="text-align:center; width:80px">
+            Số lượng
+        </th>
+        <th style="text-align:center; width:100px">
+            Ngày TOUR
+        </th>
+        <th style="text-align:center; width:100px">
+            Địa Điểm Xuất Phát
+        </th>
+        <th style="text-align:center; width:100px">
+            Gian Liên Kết
+        </th>
+
+        <th style="text-align:center"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @* sử dụng helper để cắt TenSach lấy 50 ký tự*@
+        @Truncate(item.Ten_TOUR, 50)
+    </td>
+    <td>
+        <img src="~/Images/Tour/@item.Anh_MAIN" style="width:100px;" />
+    </td>
+    <td>
+        <img src="~/Images/Tour/@item.Anh_TOUR" style="width:100px;" />
+    </td>
+    <td>
+        @*sử dụng helper để cắt MoTa lấy 70 ký tự*@
+        @Html.Raw(Truncate(item.Lich_Trinh, 70).ToString())
+    </td>
+    <td>
+        @Html.FormatValue(item.GiaTien_TOUR, "{0:#,##0}")
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoLuong)
+    </td>
+    <td>
+        @*định dạng hiển thị*@
+        @Html.FormatValue(item.NgayTOUR, "{0:dd/MM/yyyy}")
+    </td>
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.DIADIEM.Ten_DD)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LIENKET.Ten_LK)
+    </td>
+
+
+    <td>
+        <a href="@Url.Action("EditTour","Tour", new { id = item.Ma_TOUR })" class="btn btn-warning" role="button">Sửa</a>
+        <a href="@Url.Action("Details_Tour","Tour", new { id = item.Ma_TOUR })" class="btn btn-primary" role="button">Chi tiết</a>
+        <a href="@Url.Action("DeleteTour","Tour", new { id = item.Ma_TOUR })" class="btn btn-danger" role="button">Xóa</a>
+    </td>
+</tr>
+    }
+
+</table>
+@*Tạo liên kết các trang*@
+Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+
+    @Html.PagedListPager(Model, page => Url.Action("IndexTour", new { page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>
+
+

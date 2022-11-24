@@ -1,0 +1,85 @@
+﻿@model TravelSmart.Models.TOUR
+@{
+    ViewBag.Title = "ChitietTour";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<style type="text/css">
+    h2{
+        text-align:center;
+    }
+    .Main {
+        border: 0.5px solid black;
+
+    }
+        .Main img {
+            width:100%;
+            background-color: white;
+        }
+        .Main .text p {
+            background-color: black;
+            border: 1px solid black;
+            padding: 13px 15px;
+            color: white;
+            font-weight: bold;
+            float:left;
+        }
+        .Main .text a {
+            background-color:red ;
+            border: 1px solid black;
+            padding: 13px 15px;
+            color: white;
+            font-weight: bold;
+            float:right;
+        }
+            .Main .text a img{
+                width:24px;
+                height:24px;
+                float:left;
+            }
+            .xem-ngay p {
+                background-color: lightseagreen;
+                border: 1px solid black;
+                padding: 10px 10px;
+                color: white;
+                font-weight: bold;
+            }
+    .d{
+         background-color: red;
+            border: 1px solid black;
+            padding: 5px 10px;
+            color: white;
+            font-weight: bold;
+    }
+</style>
+<h2>Giới Thiệu TOUR</h2>
+<div class="container">
+    <div class="col-sm-9 col-md-9 col-lg-9 col-xs-6">
+        <div class="Main">
+            <span class="d">@Html.FormatValue(Model.GiaTien_TOUR, "{0:#,##0}") VNĐ</span>
+            <div><a href="@Url.Action("ChitietLienKet","Travel", new { id = Model.Ma_LK })">
+    <p>
+        @Html.DisplayFor(model => model.LIENKET.Ten_LK)
+    </p>
+</a></div>
+            
+            <img src="~/Images/Tour/@Model.Anh_MAIN" alt="@Model.Ten_TOUR" />
+            <div class="text">
+                <p> @Model.Ten_TOUR</p>
+                <p>Ngày Khởi Hành: @Html.FormatValue(@Model.NgayTOUR, "{0:dd/MM/yyyy}")</p>
+                <a href="@Url.Action("ThemGioHang","GioHang",new {mt = Model.Ma_TOUR, url = Request.Url.ToString()})" class="xem-ngay"><img src="~/Images/icon/giohang.png">Đặt Vé</a>
+            </div>
+
+        </div>
+        <hr />
+        <hr />
+        <div class="xem-ngay">
+            <p>
+                @Html.Raw(@Model.Lich_Trinh.ToString().Replace("\n", "</p><p>"))
+            </p>
+        </div>
+      
+    </div>
+</div>
+       
+
+    

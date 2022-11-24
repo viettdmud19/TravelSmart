@@ -1,0 +1,84 @@
+﻿@*Khai báo để sử dụng chức năng phân trang*@
+@using TravelSmart.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<TravelSmart.Models.DIADIEM>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+@*Xây dựng một helper tùy chỉnh để cắt độ dài chuỗi*@
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text></text>
+    }
+}
+
+
+
+<h2 style="text-align:center">QUẢN LÝ THÔNG TIN ĐỊA ĐIỂM</h2>
+
+<p>
+    @Html.ActionLink("Thêm Mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th style="text-align:center; width:140px">
+            Tên Địa điểm
+        </th>
+        <th style="text-align:center; width:200px">
+            Mô tả
+        </th>
+        <th style="text-align:center; width:80px">
+            @Html.DisplayNameFor(model => model.First().ANH_DD)
+        </th>
+        <th style="text-align:center"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @* sử dụng helper để cắt TenSach lấy 50 ký tự*@
+                @Truncate(item.Ten_DD, 50)
+            </td>
+            <td>
+                @*sử dụng helper để cắt MoTa lấy 70 ký tự*@
+                @Html.Raw(Truncate(item.MoTa_DD, 70).ToString())
+            </td>
+            <td>
+                <img src="~/Images/@item.ANH_DD" style="width:80px;" />
+            </td>
+           
+           
+
+            <td>
+                <a href="@Url.Action("Edit","DiaDiem",new { id = item.Ma_DD })" class="btn btn-warning" role="button">Sửa</a>
+                <a href="@Url.Action("Details","DiaDiem", new { id = item.Ma_DD })" class="btn btn-primary" role="button">Chi tiết</a>
+                <a href="@Url.Action("Delete","DiaDiem", new { id = item.Ma_DD })" class="btn btn-danger" role="button">Xóa</a>
+            </td>
+        </tr>
+    }
+
+</table>
+@*Tạo liên kết các trang*@
+Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>
+

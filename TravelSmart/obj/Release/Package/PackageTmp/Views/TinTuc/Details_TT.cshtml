@@ -1,0 +1,13 @@
+﻿@model TravelSmart.Models.TINTUC
+@{
+    ViewBag.Title = "Details_TT";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>@Model.TieuDe_TT</h2>
+<div>
+    <p>@Model.MoTa_TT</p>
+    <div>
+        <img src="~/Images/Tintuc/@Model.Anh_TT" style="width:100%; height:200px;" alt="@Model.TieuDe_TT"/>
+    </div>
+</div>

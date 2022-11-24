@@ -1,0 +1,41 @@
+﻿<style type="text/css">
+    .list-group-item a{
+        color:black;
+       font-size:15px;
+        
+    }
+    .list-group-item a:hover{
+        cursor:pointer;
+        background-color:orange;
+    }
+    .list-group-item img{
+        width:30px;
+        height:30px;
+        float:left;
+    }
+</style>
+<ul class="list-group">
+    <li class="list-group-item active" style="font-weight:bold; text-align:center">DANH MỤC</li>
+    <li class="list-group-item" style="text-align:center">
+
+        <img src="~/Images/icon/luutru.png" />
+        <a href="@Url.Action("LUUTRU","Travel")">LƯU TRÚ </a>
+    </li>
+    <li class="list-group-item" style="text-align:center">
+
+        <img src="~/Images/icon/tour.png" />
+        <a href="@Url.Action("TOUR","Travel")">TOUR </a>
+    </li>
+    <li class="list-group-item" style="text-align:center">
+
+        <img src="~/Images/icon/amthuc.png" />
+        <a href="@Url.Action("AMTHUC","Travel")">ẨM THỰC</a>
+    </li>
+    <li class="list-group-item" style="text-align:center">
+
+        <img src="~/Images/icon/giaitri.png" />
+        <a href="@Url.Action("GIAITRI","Travel")">GIẢI TRÍ </a>
+    </li>
+   
+
+</ul>

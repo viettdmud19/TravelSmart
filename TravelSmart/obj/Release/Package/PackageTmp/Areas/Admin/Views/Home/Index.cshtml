@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.7.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.7.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.7.0/css/font-awesome.css
+">
+<style type="text/css">
+    .my-card {
+        position: absolute;
+        left: 40%;
+        top: -20px;
+        border-radius: 50%;
+    }
+</style>
+
+<h2>XIN CHÀO ADMIN</h2>
+
+
+
+<div class="jumbotron">
+    <div class="row w-100">
+        <div class="col-md-3">
+            <div class="card border-info mx-sm-1 p-3">
+                <div class="card border-info shadow text-info p-3 my-card"><span class="fa fa-car" aria-hidden="true"></span></div>
+                <div class="text-info text-center mt-3"><h4>Số lượt truy cập:</h4></div>
+                <div class="text-info text-center mt-2"><h1>@ApplicationInstance.Application["HitCounter"]</h1></div>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-success mx-sm-1 p-3">
+                <div class="card border-success shadow text-success p-3 my-card"><span class="fa fa-eye" aria-hidden="true"></span></div>
+                <div class="text-success text-center mt-3"><h4>Số người Online:</h4></div>
+                <div class="text-success text-center mt-2"><h1>@ApplicationInstance.Application["Online"]</h1></div>
+            </div>
+        </div>
+       
+    </div>
+</div>

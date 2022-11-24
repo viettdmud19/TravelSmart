@@ -1,0 +1,114 @@
+﻿@using TravelSmart.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<TravelSmart.Models.TINTUC>
+@{
+    ViewBag.Title = "Index_TT";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<style type="text/css">
+    .provider-info {
+        margin-top: 10px;
+        border: solid 1px #ccc;
+        height: 100px;
+        display: table;
+        width: 100%;
+    }
+
+        .provider-info .Left-info {
+            height: 100px;
+            float: left;
+            display: table;
+            width: 30%;
+        }
+
+            .provider-info .left-info img {
+                border: solid 2px #fff;
+            }
+
+        .provider-info .right-info {
+            float: left;
+            width: 70%;
+            padding-left: 20px;
+            padding-right: 20px;
+            background-color: lightseagreen;
+        }
+
+        .provider-info h1 {
+            font-size: 24px;
+            color: #0084a2;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+    .information {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: table;
+    }
+</style>
+@*Xây dựng một helper tùy chỉnh để cắt độ dài chuỗi*@
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text></text>
+    }
+}
+
+<h2 style="text-align:center">TIN TỨC DU LỊCH</h2>
+
+<p>
+    @Html.ActionLink("Đăng bài", "Create_TT", "TinTuc")
+</p>
+
+<hr />
+@foreach (var item in Model)
+{
+    <div class="provider-info">
+
+        <div class="Left-info">
+            <div class="image-wrap">
+                <img src="~/Images/Tintuc/@item.Anh_TT " style="width:200px ; height:200px" alt="@item.TieuDe_TT" />
+            </div>
+        </div>
+        <div class="Right-info">
+            <h1><a href="@Url.Action("Details_TT","TinTuc", new { id = item.ma_TT })">@item.TieuDe_TT</a> </h1>
+            <div class="information">
+                <div class="tintuc">
+                    <p>@Html.Raw(Truncate(item.MoTa_TT, 70).ToString())</p>
+                </div>
+
+                <div class="date">
+                    @Html.FormatValue(item.NgayDang_TT, "{0:dd/MM/yyyy}")
+                </div>
+                <div>
+                    @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+}
+@*Tạo liên kết các trang*@
+Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+
+    @Html.PagedListPager(Model, page => Url.Action("Index_TT", "TinTuc", new { page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>
+

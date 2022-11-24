@@ -1,0 +1,48 @@
+﻿@model TravelSmart.Models.DIADIEM
+
+@{
+    ViewBag.Title = "ChiTietDiaDiem";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<link href="~/CSS/index.css" rel="stylesheet" />
+<style type="text/css">
+
+    .tenDD {
+        font-size: 25px;
+        color: red;
+    }
+
+    .motadd p {
+        font-size: 20px;
+    }
+
+    .motadd img {
+        float: left;
+        width: 40%;
+        height: 250px;
+    }
+</style>
+
+<div class="khung">
+    <h2 class="tenDD text-center">
+        @Model.Ten_DD
+    </h2>
+    <div class="motadd">
+
+        <img class="ima" src="~/Images/@Model.ANH_DD" alt=" @Model.Ten_DD" />
+
+        <p>
+            @Html.Raw(@Model.MoTa_DD.ToString().Replace("\n", "</p><p>"))
+        </p>
+
+    </div>
+
+
+</div>
+<div class="container-fluid">
+    @Html.Action("TourPartial", "Travel")
+</div>
+<div class="container-fluid">
+    @Html.Action("LuuTruPartial", "Travel")
+</div>
+

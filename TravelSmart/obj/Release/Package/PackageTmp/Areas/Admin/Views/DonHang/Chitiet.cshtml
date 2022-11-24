@@ -1,0 +1,57 @@
+﻿@model TravelSmart.Models.CHITIETDATHANG
+@{
+    ViewBag.Title = "Chitiet";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<h2 style="text-align:center">CHI TIẾT VÉ ĐẶT</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên TOUR :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TOUR.Ten_TOUR)
+        </dd>
+        <dt>
+            Ảnh TOUR:
+        </dt>
+
+        <dd>
+            <img src="~/Images/Tour/@Html.DisplayFor(model => model.TOUR.Anh_TOUR)" alt="" />
+        </dd>
+        <dt>
+            Số lượng vé
+        </dt>
+
+        <dd>
+            @Model.SoLuong
+        </dd>
+        <dt>
+            Gía Tiền
+        </dt>
+
+        <dd>
+            @Html.FormatValue(Model.DonGia, "{0:#,##0}")VNĐ
+        </dd>
+
+      
+
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Sửa", "Edit", new { id = Model.Ma_TOUR }) |*@
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ ", "Index_DonHang")
+</p>

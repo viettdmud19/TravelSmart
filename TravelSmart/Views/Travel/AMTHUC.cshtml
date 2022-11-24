@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TravelSmart.Models.AMTHUC>
+@{
+    ViewBag.Title = "AMTHUC";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<link href="~/CSS/index.css" rel="stylesheet" />
+<h2>ẨM THỰC </h2>
+
+<div class="row-test-center">
+    @foreach (var at in Model)
+    {
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+            <div class="border">
+                <div class="product-top">
+                    <img src="~/Images/AMTHUC/@at.Anh_AT" />
+
+                    <div class="tendd text-center">
+                        <h3>
+                            <a href="#">
+
+                                @at.Ten_AT
+                            </a>
+                        </h3>
+                    </div>
+                    <a href="@Url.Action("ChitietAMTHUC","Travel",new { id = at.Ma_AT })" class="xem-ngay">XEM THÊM</a>
+                </div>
+            </div>
+
+
+
+        </div>}
+</div>
+

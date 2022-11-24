@@ -1,0 +1,47 @@
+﻿@using TravelSmart.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<LIENKET>
+@{
+    ViewBag.Title = "LienKet";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<link href="~/CSS/index.css" rel="stylesheet" />
+<h2>GIAN KẾT NỐI </h2>
+
+<div class="row-test-center">
+    @foreach (var lienket in Model)
+    {
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+            <div class="border">
+                <div class="product-top">
+                    <img src="~/Images/LienKet/@lienket.Anh_LK" />
+
+                    <div class="tendd text-center">
+                        <h3>
+                            <a href="#">
+
+                                @lienket.Ten_LK
+                            </a>
+                        </h3>
+                    </div>
+                    <a href="@Url.Action("ChitietLienKet","Travel", new { id = lienket.Ma_LK })" class="xem-ngay">XEM CHI TIẾT</a>
+                </div>
+            </div>
+
+
+
+        </div>
+   <hr /> }
+</div>
+@*Tạo liên kết các trang*@
+Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+
+    @Html.PagedListPager(Model, page => Url.Action("LienKet", "Travel", new { page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>

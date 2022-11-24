@@ -1,0 +1,95 @@
+﻿@model TravelSmart.Models.TOUR
+@{
+    ViewBag.Title = "CreateTour";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+
+
+
+
+<h2>THÊM TOUR</h2>
+@*Thêm thuộc tính cho form để upload ảnh*@
+@using (Html.BeginForm("CreateTour", "Tour", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2">Tên TOUR</label>
+        <div class="col-md-10">
+            <input type="text" size="70" name="sTen_TOUR" value="@ViewBag.Ten_Tour" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Ảnh Main</label>
+        <div class="col-md-10">
+            <input type="file" name="fFileUpload" />
+            @*Thông báo lỗi yêu cầu phải chọn ảnh bìa*@
+            @ViewBag.ThongBao
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Ảnh bìa</label>
+        <div class="col-md-10">
+            <input type="file" name="fFileUp" />
+            @*Thông báo lỗi yêu cầu phải chọn ảnh bìa*@
+            @ViewBag.ThongBao
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Lịch Trình</label>
+        <div class="col-md-10">
+            <textarea name="sLich_Trinh">@ViewBag.LichTrinh</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Gía Tiền TOUR</label>
+        <div class="col-md-10">
+            <input type="number" min="1" required name="mGiaTien_TOUR"
+                   value="@ViewBag.GiaTOUR" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Số Lượng Vé</label>
+        <div class="col-md-10">
+            <input type="number" min="1" required name="iSoLuong"
+                   value="@ViewBag.SoLuong" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Ngày Khởi Hành</label>
+        <div class="col-md-10">
+            <input type="date" name="dNgayTOUR" value="@ViewBag.NgayTOUR" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Địa Điểm Khởi Hành</label>
+        <div class="col-md-10">
+            @*Hiển thị ViewBag.Madd vào dropdownlist*@
+            @Html.DropDownList("MaDD")
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Gian Liên Kết</label>
+        <div class="col-md-10">
+            @Html.DropDownList("MaLK")
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Thêm Mới" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ ", "IndexTour")
+</div>
+
